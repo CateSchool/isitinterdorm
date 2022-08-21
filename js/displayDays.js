@@ -12,7 +12,7 @@ function displaySFriday(x, y, w, h) {
     let endi = 7+12 + 45/60;
     let w1 = (((6+12) - START_T)/dayHours) * w;
     let wInter = ((endi-(6+12))/dayHours) * w;
-    let wAfter = ((END_T - (10+12))/dayHours) * w;
+    let wAfter = ((END_T - endi)/dayHours) * w;
   
     displayBox(0, 0, w1, h, "8AM", "", color(255))
     displayBox(w1, 0, wInter, h, "6PM", "7:45PM", color('green'))
@@ -35,6 +35,7 @@ function displayNFriday(x, y, w, h) {
     displayBox(w1, 0, wInter, h, "6PM", "10PM", color('green'))
     displayBox(w1+wInter, 0, wAfter, h, "", "12PM", color(255))
     
+
     pop();
 }
 
@@ -93,14 +94,14 @@ function drawLine(x, y, w, h) {
     push();
     translate(x, y);
     stroke(0);
-    strokeWeight(2);
+    // strokeWeight(2);
     const dx = map(getTime(), START_T, END_T, 0, w);
     line(dx, 0, dx, h);
 
     translate(dx, h+20);
     displayLineTime();
 
-    strokeWeight(1);
+    // strokeWeight(1);
     pop();
 }
 
@@ -118,9 +119,13 @@ function displayLineTime() {
     noStroke();
     fill(0);
     textSize(18);
-    text(h + ":" + m + " " + (isPM?"PM":"AM"), 0, 0);
+    text(h + ":" + (m<10? "0"+m:m) + " " + (isPM?"PM":"AM"), 0, 0);
+
+    fill(150, 0, 0);
     textSize(14);
     text(getWeekDayName(), 0, 20);
+
+    fill(0);
     text(isSWeek()?"S Week": "N Week", 0, 40);
 }
 

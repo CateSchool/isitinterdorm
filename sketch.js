@@ -17,7 +17,7 @@ function draw() {
     background(220);
 
     const w = min(600, width * .8);
-    const x = width * .1;
+    const x = (width - w) / 2;
 
     if (isInterdorm()) {
         displayText("YES", x, 130)
@@ -26,7 +26,11 @@ function draw() {
         displayText("NO", x, 130)
     }
 
-    displayToday(x, 260, w, 50);
+    displayToday(x, 230, w, 50);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
 
 function displayText(txt, x, y) {

@@ -56,6 +56,7 @@ function displayDateTime(x, y) {
     fill(0);
 
     let h = hour();
+    let m = minute();
     let isPM = false;
     if (h > 12) {
         h -= 12;
@@ -64,7 +65,7 @@ function displayDateTime(x, y) {
 
     push();
     translate(x, y);
-    text(`${getWeekDayName()}, ${h}:${minute()} ${isPM ? "PM" : "AM"}`, 0, 0);
+    text(`${getWeekDayName()}, ${h}:${m<10? "0"+m:m} ${isPM ? "PM" : "AM"}`, 0, 0);
     text(`${isSWeek() ? "S Week" : "N Week"}`, 0, 30);
     pop();
 }
@@ -78,13 +79,11 @@ function getTime() {
     let t = hour() + minute() / 60;
     t = constrain(t, START_T, END_T);
     return t;
-    // return 5 + 12.2;
 
 }
 
 function getWeekDay() {
     return new Date().getDay();
-    // return 1;
 }
 
 function isSWeek() {
