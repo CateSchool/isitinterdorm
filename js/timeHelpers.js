@@ -49,6 +49,33 @@ function isInterDormTime() {
     return false;
 }
 
+function displayTimeInfo(x, y) {
+    push();
+    translate(x, y);
+
+    
+
+    noStroke();
+    let sW = isSWeek() ? "S Week" : "N Week";
+    fill(150, 0, 0);
+    textSize(20);
+    text(getWeekDayName(), 0, 0);
+
+    let sp = textWidth(getWeekDayName() + " ");
+
+    fill(0);
+    textSize(16);
+    text(sW, sp, 0);
+
+    sp += textWidth(sW);
+
+    noFill();
+    stroke(100);
+    // rect(0, -20, 150, 30);
+    line(0, 12, sp, 12);
+    pop();
+}
+
 
 function displayDateTime(x, y) {
     textSize(14);
@@ -100,9 +127,9 @@ function isSWeek() {
         [4, 17, 23],
     ];
     for (const wk of sWeeks) {
-        let dStart = new Date(2000+wk[2], wk[0]-1, wk[1]);
-  
-        let dEnd = new Date(2000+wk[2], wk[0]-1, wk[1]);
+        let dStart = new Date(2000 + wk[2], wk[0] - 1, wk[1]);
+
+        let dEnd = new Date(2000 + wk[2], wk[0] - 1, wk[1]);
         dEnd.setDate(dEnd.getDate() + 7);
 
         let now = new Date();

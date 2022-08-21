@@ -20,20 +20,30 @@ function draw() {
     const x = (width - w) / 2;
 
     if (isInterdorm()) {
-        displayText("YES", x, 130)
+        displayText("YES", x, 130, color('green'))
     }
     else {
-        displayText("NO", x, 130)
+        displayText("NO", x, 130, color('red'))
     }
 
-    displayToday(x, 230, w, 50);
+    displayTimeInfo(x, 220);
+    displayToday(x, 280, w, 50);
+}
+
+function displayLine(x, y, w) {
+    push();
+    translate(x, y);
+    stroke(0);
+    strokeWeight(1);
+    line(0, 0, w, 0);
+    pop();
 }
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-function displayText(txt, x, y) {
+function displayText(txt, x, y, col) {
     textSize(100);
     noStroke();
     fill(0);

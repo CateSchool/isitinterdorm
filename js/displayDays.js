@@ -83,7 +83,7 @@ function displayBox(x, y, w, h, start, end, col) {
     stroke(0);
     rect(x, y, w, h);
 
-    fill(0);
+    fill(100);
     noStroke();
     textSize(12);
     text(start, x-textWidth(start)/2, -10);
@@ -93,7 +93,7 @@ function displayBox(x, y, w, h, start, end, col) {
 function drawLine(x, y, w, h) {
     push();
     translate(x, y);
-    stroke(0);
+    stroke(100);
     // strokeWeight(2);
     const dx = map(getTime(), START_T, END_T, 0, w);
     line(dx, 0, dx, h);
@@ -116,17 +116,14 @@ function displayLineTime() {
         h -= 12;
     }
 
+    let timeSt = h + ":" + (m<10? "0"+m:m) + " " + (isPM?"PM":"AM");
+    
     noStroke();
     fill(0);
     textSize(18);
-    text(h + ":" + (m<10? "0"+m:m) + " " + (isPM?"PM":"AM"), 0, 0);
 
-    fill(150, 0, 0);
-    textSize(14);
-    text(getWeekDayName(), 0, 20);
-
-    fill(0);
-    text(isSWeek()?"S Week": "N Week", 0, 40);
+   let dx = map(getTime(), START_T, END_T, 0, -textWidth(timeSt));
+    text(timeSt, dx, 0);
 }
 
 function displayMonday(x, y) {
