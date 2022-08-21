@@ -1,7 +1,7 @@
-let grade = 9;
+let grade = 11;
 const START_T = 8;
 const END_T = 24;
-let dorm = 'male-identifying';
+let dorm = 'female-identifying';
 let visitingDorm = 'female-identifying';
 let txtFor9th = "Tues-Thurs and S Fridays from 6pm-7:45pm; on N Fridays from 6pm-10pm; on Saturdays from 4pm-6pm and 8-10pm; and on Sundays from 4pm-6pm."
 
@@ -9,6 +9,7 @@ let dormSel, gradeSel;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
+    setDormMayVisit();
 }
 
 

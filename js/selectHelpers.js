@@ -10,14 +10,19 @@ function gradeSelect() {
     var e = document.getElementById("grade");
     var value = e.value;
     grade = +value;
-    console.log("grade", value);
+    // console.log("grade", value);
+    setDormMayVisit();
 
     // TODO
     if (grade == 9) {
-        // disable bunch of things
+        if (dorm == "all gender") {
+            document.getElementById("dorm").value = "female-identifying";
+            dorm = "female-identifying";
+        }
+        document.getElementById("dormAllGender").setAttribute("disabled", "disabled");
     }
     else {
-        // enable a bunch of things
+        document.getElementById("dormAllGender").removeAttribute("disabled");
     }
 }
 
@@ -55,7 +60,9 @@ function dormSelect() {
     var txt = e.options[e.selectedIndex].text;
     dorm = txt;
     // console.log(value, txt);
-    console.log("dorm", dorm);
+    // console.log("dorm", dorm);
+
+    setDormMayVisit();
 }
 
 function dormVisSelect() {
@@ -68,7 +75,7 @@ function dormVisSelect() {
     var e = document.getElementById("dormVis");
     var txt = e.options[e.selectedIndex].text;
     visitingDorm = txt;
-    console.log("visiting dorm", visitingDorm);
+    // console.log("visiting dorm", visitingDorm);
 }
 
 // function dormVisSelected() {
@@ -79,3 +86,19 @@ function dormVisSelect() {
 //     dorm = dormSel.value();
 // }
 
+function setDormMayVisit() {
+    let txt = '';
+    if (grade == 9) {
+        txt = "other dorms based upon interdorm times below:";
+    }
+    else if (dorm == "all gender") {
+        txt = "no other dorm visitation at this time"
+    }
+    else if (dorm == "male-identifying") {
+        txt = "male-identifying dorms outside of academic day; female-indentifying & all-gender dorms only based on interdorm hours below:"
+    }
+    else if (dorm == "female-identifying") {
+        txt = "female-identifying dorms outside of academic day; male-indentifying & all-gender dorms only based on interdorm hours below:"
+    }
+    document.getElementById("dormsToVisit").innerHTML = txt;
+}

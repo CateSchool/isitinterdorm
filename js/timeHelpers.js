@@ -1,15 +1,16 @@
 
 function isInterdorm() {
-    if (grade == 9) {
-        return isInterDormTime();
-    }
-    else if (dorm == "all gender") {
-        return false;
-    }
-    else if (dorm == visitingDorm) {
-        return true;
-    }
     return isInterDormTime();
+    // if (grade == 9) {
+    //     return isInterDormTime();
+    // }
+    // else if (dorm == "all gender") {
+    //     return false;
+    // }
+    // else if (dorm == visitingDorm) {
+    //     return true;
+    // }
+    // return isInterDormTime();
 }
 
 
