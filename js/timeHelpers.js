@@ -65,7 +65,7 @@ function displayDateTime(x, y) {
 
     push();
     translate(x, y);
-    text(`${getWeekDayName()}, ${h}:${m<10? "0"+m:m} ${isPM ? "PM" : "AM"}`, 0, 0);
+    text(`${getWeekDayName()}, ${h}:${m < 10 ? "0" + m : m} ${isPM ? "PM" : "AM"}`, 0, 0);
     text(`${isSWeek() ? "S Week" : "N Week"}`, 0, 30);
     pop();
 }
@@ -87,5 +87,32 @@ function getWeekDay() {
 }
 
 function isSWeek() {
-    return true;
+    const sWeeks = [
+        [8, 29, 22],
+        [9, 14, 22],
+        [10, 17, 22],
+        [11, 7, 22],
+        [1, 5, 23],
+        [1, 16, 23],
+        [1, 30, 23],
+        [3, 13, 23],
+        [3, 27, 23],
+        [4, 17, 23],
+    ];
+    for (const wk of sWeeks) {
+        let dStart = new Date(2000+wk[2], wk[0]-1, wk[1]);
+  
+        let dEnd = new Date(2000+wk[2], wk[0]-1, wk[1]);
+        dEnd.setDate(dEnd.getDate() + 7);
+
+        let now = new Date();
+        if (now.getTime() >= dStart.getTime() && now.getTime() <= dEnd.getTime()) {
+            return true;
+        }
+    }
+    return false;
 }
+
+
+
+
