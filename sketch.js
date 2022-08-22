@@ -101,3 +101,7 @@ function displayToday(x, y, w, h) {
 //     }
 // }
 
+
+function hideConsent() {
+    document.getElementById("consent").classList.add('hideConsent');
+}
