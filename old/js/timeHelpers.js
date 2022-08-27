@@ -1,23 +1,3 @@
-const MON = 1;
-const TUES = 2;
-const WED = 3;
-const THURS = 4;
-const FRI = 5;
-const SAT = 6;
-const SUN = 0;
-
-function isSameGender() {
-    if (dorm == "all gender" || dorm == visitingDorm) {
-        // if (grade > 10) {
-        //     return true;
-        // }
-        // else if (!isAcademicDay()) {
-        //     return true;
-        // }
-        return true;
-    }
-    return false;
-}
 
 function isInterdorm() {
     return isInterDormTime();
@@ -33,20 +13,6 @@ function isInterdorm() {
     // return isInterDormTime();
 }
 
-function isAcademicDay() {
-    if (getWeekDay() > SUN && getWeekDay() < SAT) {
-        if (getTime() < (12 + 3)) {
-            return true;
-        }
-    }
-    else if (isSWeek() && getWeekDay() == SAT) {
-        let t = getTime();
-        if (t > 8 && t < 12.5) {
-            return true;
-        }
-    }
-    return false;
-}
 
 function isInterDormTime() {
     let t = getTime();
@@ -88,7 +54,7 @@ function displayTimeInfo(x, y) {
     push();
     translate(x, y);
 
-
+    
 
     noStroke();
     let sW = isSWeek() ? "S Week" : "N Week";
@@ -108,12 +74,6 @@ function displayTimeInfo(x, y) {
     stroke(100);
     // rect(0, -20, 150, 30);
     line(0, 12, sp, 12);
-
-    fill('blue');
-    noStroke();
-    textSize(12);
-    let academic = isAcademicDay() ? "(ACADEMIC DAY)" : "";
-    text(academic, sp + 10, 0);
     pop();
 }
 
@@ -144,26 +104,17 @@ function getWeekDayName() {
 }
 
 function getTime() {
-    if (currentTime == "now") {
-        let t = hour() + minute() / 60;
-        t = constrain(t, START_T, END_T);
-        return t;
-    }
-    return +currentTime;
+    let t = hour() + minute() / 60;
+    t = constrain(t, START_T, END_T);
+    return t;
+
 }
 
 function getWeekDay() {
-    if (currentDay == "today")
-        return new Date().getDay();
-    return +currentDay;
+    return new Date().getDay();
 }
 
 function isSWeek() {
-    return (currentWeek == "S Week");
-}
-
-function isNowSWeek() {
-
     const sWeeks = [
         [8, 29, 22],
         [9, 14, 22],

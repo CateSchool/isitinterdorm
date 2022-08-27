@@ -41,9 +41,12 @@
     </nav>
     <!-- Page content-->
     <div class="container">
+        <div class="text-center mt-5">
+            <h1>Is it interdorm?</h1>
+            <!-- <p class="lead">A complete project boilerplate built with Bootstrap</p>
+                <p>Bootstrap v5.1.3</p> -->
+        </div>
         <div>
-            <!-- <p><span id="dayOfWeek">Tuesday</span> <span id="isSWeek">N Week</span> <span id="academicDay">(ACADEMIC DAY)</span></p>
-            <hr /> -->
             <p>
                 <label for="grade" class="selectLabel">Grade:</label>
                 <select name="grade" id="grade" onchange="gradeSelect()">
@@ -61,72 +64,26 @@
                     <option value="all gender" id="dormAllGender">all gender</option>
                 </select>
             </p>
-            <p>
-                <label for="visDorm" class="selectLabel">Visiting:</label>
-                <select name="visDorm" id="visDorm" onchange="dormVisSelect()">
-                    <option value="male-identifying" selected>male-identifying</option>
-                    <option value="female-identifying">female-identifying</option>
+            <!-- <p>
+                <label for="visDorm">Visiting:</label>
+                <select name="visDorm" id="visDorm" onchange="dormVisSelect()" disabled>
+                    <option value="male-identifying">male-identifying</option>
+                    <option value="female-identifying" selected>female-identifying</option>
                     <option value="all gender">all gender</option>
                 </select>
-            </p>
-            <!-- <p>
+            </p> -->
+            <p>
                 <label for="mayVisit" class="selectLabel">May visit:</label>
                 <span id="dormsToVisit"></span>
-            </p> -->
+            </p>
         </div>
-
-        <div class="text-center mt-5">
-            <hr />
-            <h1>can I visit?</h1>
-            <!-- <p id="explanation"></p>-->
-            <!-- <label for="week" class="selectLabel">Your Dorm:</label> -->
-            <select name="weekSel" id="weekSel" onchange="weekSelect()">
-                <option value="S Week">S Week</option>
-                <option value="N Week">N Week</option>
-            </select>
-            <select name="daySel" id="daySel" onchange="daySelect()">
-                <option value="today" selected>today</option>
-                <option value="1">Monday</option>
-                <option value="2">Tuesday</option>
-                <option value="3">Wednesday</option>
-                <option value="4">Thursday</option>
-                <option value="5">Friday</option>
-                <option value="6">Saturday</option>
-                <option value="0">Sunday</option>
-            </select>
-            <select name="timeSel" id="timeSel" onchange="timeSelect()">
-                <option value="now" selected>now</option>
-                <option value="8">8AM</option>
-                <option value="9">9AM</option>
-                <option value="10">10AM</option>
-                <option value="11">11AM</option>
-                <option value="12">12PM</option>
-                <option value="13">1PM</option>
-                <option value="14">2PM</option>
-                <option value="15">3PM</option>
-                <option value="16">4PM</option>
-                <option value="17">5PM</option>
-                <option value="18">6PM</option>
-                <option value="19">7PM</option>
-                <option value="20">8PM</option>
-                <option value="21">9PM</option>
-                <option value="22">10PM</option>
-                <option value="23">11PM</option>
-                <option value="24">12AM</option>
-            </select>
-            
-        </div>
-        <br />
     </div>
 
     <div id="consent" class="">
         <div id="consentBG"></div>
         <div class="d-flex justify-content-center mt-5 h-100">
             <div class="d-flex align-items-center align-self-center card p-3 text-center cookies">
-                <span class="mt-2">Non-resident visitation within personal rooms will commence <strong>after</strong>
-                    each dorm has had the opportunity to <strong>set community expectations and norms</strong>, for
-                    upper level students that is typically after Outings Week and for lower school students it is after
-                    Fall Family Weekend.
+                <span class="mt-2">Non-resident visitation within personal rooms will commence <strong>after</strong> each dorm has had the opportunity to <strong>set community expectations and norms</strong>, for upper level students that is typically after Outings Week and for lower school students it is after Fall Family Weekend. 
                 </span>
                 <button class="btn btn-dark mt-3 px-4" type="button" onclick="hideConsent()">Okay</button>
             </div>

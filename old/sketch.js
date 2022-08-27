@@ -2,14 +2,13 @@ let grade = 11;
 const START_T = 8;
 const END_T = 24;
 let dorm = 'female-identifying';
-let visitingDorm = 'male-identifying';
+let visitingDorm = 'female-identifying';
 let txtFor9th = "Tues-Thurs and S Fridays from 6pm-7:45pm; on N Fridays from 6pm-10pm; on Saturdays from 4pm-6pm and 8-10pm; and on Sundays from 4pm-6pm."
 
 let dormSel, gradeSel;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    setWeek();
     setDormMayVisit();
 }
 
@@ -20,54 +19,16 @@ function draw() {
 
     const w = min(600, width * .8);
     const x = (width - w) / 2;
-    let y = 130;
-    let tw = 0;
 
-    if (mayVisit) {
-        displayText("YES", x, y, color('green'))
-        tw = textWidth("YES");
+    if (isInterdorm()) {
+        displayText("YES", x, 130, color('green'))
     }
     else {
-        displayText("NO", x, y, color('red'))
-        tw = textWidth("NO");
+        displayText("NO", x, 130, color('red'))
     }
 
-    displayExplanation(x, y+20, 0);
-    displayLegend(x+w-120, y-60);
-
-    if (isInterdormChartOn) {
-        // displayTimeInfo(x, 220);
-        displayToday(x, 250, w, 50);
-    }
-   
-}
-
-function displayExplanation(x, y, tw) {
-    textSize(12);
-    noStroke();
-    fill(0);
-    let wtext = (width - tw - 2*x);
-    // let xx = x + tw + 30, y-10;
-    text(detailsTxt, x, y, 200, 100);
-}
-
-function displayLegend(x, y) {
-    let sz = 20;
-    push();
-    translate(x, y);
-    noStroke();
-    fill('blue');
-    rect(0, 0, sz);
-    fill(0);
-    text("academic day", sz+5, 14);
-
-    translate(0, sz+10);
-    fill('green');
-    rect(0, 0, sz);
-    fill(0);
-    text("interdorm", sz+5, 14);
-
-    pop();
+    displayTimeInfo(x, 220);
+    displayToday(x, 280, w, 50);
 }
 
 function displayLine(x, y, w) {
@@ -102,12 +63,12 @@ function displayToday(x, y, w, h) {
         drawLine(x, y + h, w, lineH);
     }
     //  S Fridays from 6pm-7:45pm;
-    else if (isNowSWeek() && weekday == 5) {
+    else if (isSWeek() && weekday == 5) {
         displaySFriday(x, y, w, h);
         drawLine(x, y + h, w, lineH);
     }
     // on N Fridays from 6pm-10pm; 
-    else if (!isNowSWeek() && weekday == 5) {
+    else if (!isSWeek() && weekday == 5) {
         displayNFriday(x, y, w, h);
         drawLine(x, y + h, w, lineH);
     }

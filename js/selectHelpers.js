@@ -1,12 +1,20 @@
+let mayVisit = false;
+let isInterdormChartOn = false;
+let detailsTxt= '';
+let currentTime = 'now';
+let currentDay = "today";
+let currentWeek = isNowSWeek()?"S Week":"N Week";
+
+function setWeek() {
+    if (isNowSWeek()) {
+        document.getElementById("weekSel").value = "S Week";
+    }
+    else {
+        document.getElementById("weekSel").value = "N Week";
+    }
+}
 
 function gradeSelect() {
-    // gradeSel = createSelect();
-    // gradeSel.position(x, y);
-    // gradeSel.option('9th');
-    // gradeSel.option('10th');
-    // gradeSel.option('11th');
-    // gradeSel.selected('12th');
-    // gradeSel.changed(gradeSelected);
     var e = document.getElementById("grade");
     var value = e.value;
     grade = +value;
@@ -46,59 +54,97 @@ function gradeSelected() {
     }
 }
 
+function timeSelect() {
+    var e = document.getElementById("timeSel");
+    var value = e.value;
+    var txt = e.options[e.selectedIndex].text;
+    currentTime = value;
+    
+    setDormMayVisit();
+}
+
+function daySelect() {
+    var e = document.getElementById("daySel");
+    var value = e.value;
+    var txt = e.options[e.selectedIndex].text;
+    currentDay = value;
+    setDormMayVisit();
+}
+
+function weekSelect() {
+    var e = document.getElementById("weekSel");
+    var value = e.value;
+    var txt = e.options[e.selectedIndex].text;
+    currentWeek = value;
+    
+    setDormMayVisit();
+}
 
 
 function dormSelect() {
-    // dormSel = createSelect();
-    // dormSel.position(x, y);
-    // dormSel.option('male-identifying');
-    // dormSel.option('female-identifying');
-    // dormSel.option('all gender');
-    // dormSel.changed(dormSelected);
     var e = document.getElementById("dorm");
     var value = e.value;
     var txt = e.options[e.selectedIndex].text;
     dorm = txt;
     // console.log(value, txt);
     // console.log("dorm", dorm);
-
     setDormMayVisit();
 }
 
 function dormVisSelect() {
-    // dormVisSel = createSelect();
-    // dormVisSel.position(x, y);
-    // dormVisSel.option('male-identifying');
-    // dormVisSel.option('female-identifying');
-    // dormVisSel.option('all gender');
-    // dormVisSel.changed(dormVisSelected);
-    var e = document.getElementById("dormVis");
+    var e = document.getElementById("visDorm");
     var txt = e.options[e.selectedIndex].text;
     visitingDorm = txt;
-    // console.log("visiting dorm", visitingDorm);
+    setDormMayVisit();
 }
 
-// function dormVisSelected() {
-//     visitingDorm = dormVisSel.value();
-// }
-
-// function dormSelected() {
-//     dorm = dormSel.value();
-// }
-
 function setDormMayVisit() {
-    let txt = '';
-    if (grade == 9) {
-        txt = "other dorms based upon interdorm times below:";
+   detailsTxt = '';
+    if (dorm == "all gender") {
+        isInterdormChartOn = false;
+        if (grade > 10) {
+            detailsTxt = "can visit male and female-identifying dorms";
+            mayVisit = true;
+        }
+        else {
+            if (isAcademicDay()) {
+                mayVisit = false;
+                detailsTxt = "can visit male and female-identifying dorms AFTER academic day";
+            }
+            else {
+                detailsTxt = "can visit male and female-identifying dorms";
+                mayVisit = true;
+            }
+        }
+    } 
+    else if (dorm == visitingDorm) {
+        isInterdormChartOn = false;
+        if (grade > 10) {
+            detailsTxt = `can visit ${dorm} dorms`;
+            mayVisit = true;
+        }
+        else {
+            if (isAcademicDay()) {
+                mayVisit = false;
+                detailsTxt = `can visit ${dorm} dorms AFTER academic day`;
+            }
+            else {
+                detailsTxt = `can visit ${dorm} dorms`;
+                mayVisit = true;
+            }
+        }
     }
-    else if (dorm == "all gender") {
-        txt = "no other dorm visitation at this time"
+    else {
+        isInterdormChartOn = true;
+        if (isInterDormTime()) {
+            mayVisit = true;
+            detailsTxt = `interdorm is happening now`
+        }
+        else {
+            mayVisit = false;
+            detailsTxt = `must wait for interdorm`
+        }
     }
-    else if (dorm == "male-identifying") {
-        txt = "male-identifying dorms outside of academic day; female-indentifying & all-gender dorms only based on interdorm hours below:"
-    }
-    else if (dorm == "female-identifying") {
-        txt = "female-identifying dorms outside of academic day; male-indentifying & all-gender dorms only based on interdorm hours below:"
-    }
-    document.getElementById("dormsToVisit").innerHTML = txt;
+    // document.getElementById("explanation").innerHTML = detailsTxt;
+
 }

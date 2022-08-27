@@ -4,6 +4,10 @@
     left: 0;
 } */
 
+.container {
+    padding-top: 20px;
+}
+
 .selectLabel {
     font-weight: bold;
 }
@@ -41,14 +45,36 @@
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#consent {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
 }
-
 .showConsent {
     display:block;
 }
 
 .hideConsent {
     display: none;
+}
+
+#dayOfWeek {
+    color: black;
+    font-size: 25px;
+}
+
+#isSWeek {
+    color: red;
+    font-size: 16px;
+}
+
+#academicDay {
+    color: blue;
+    font-size: 12px;
 }
