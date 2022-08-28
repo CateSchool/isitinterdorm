@@ -108,6 +108,7 @@ function setDormMayVisit() {
         }
         else {
             if (isAcademicDay()) {
+                isInterdormChartOn = true;
                 mayVisit = false;
                 detailsTxt = "can visit male and female-identifying dorms AFTER academic day";
             }
@@ -125,6 +126,7 @@ function setDormMayVisit() {
         }
         else {
             if (isAcademicDay()) {
+                isInterdormChartOn = true;
                 mayVisit = false;
                 detailsTxt = `can visit ${dorm} dorms AFTER academic day`;
             }
