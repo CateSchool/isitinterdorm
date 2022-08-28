@@ -33,9 +33,10 @@ function draw() {
     }
 
     displayExplanation(x, y+20, 0);
-    displayLegend(x+w-120, y-60);
+   
 
     if (isInterdormChartOn) {
+        displayLegend(x+w-120, y-60);
         // displayTimeInfo(x, 220);
         displayToday(x, 250, w, 50);
     }
@@ -102,12 +103,12 @@ function displayToday(x, y, w, h) {
         drawLine(x, y + h, w, lineH);
     }
     //  S Fridays from 6pm-7:45pm;
-    else if (isNowSWeek() && weekday == 5) {
+    else if (isSWeek() && weekday == 5) {
         displaySFriday(x, y, w, h);
         drawLine(x, y + h, w, lineH);
     }
     // on N Fridays from 6pm-10pm; 
-    else if (!isNowSWeek() && weekday == 5) {
+    else if (!isSWeek() && weekday == 5) {
         displayNFriday(x, y, w, h);
         drawLine(x, y + h, w, lineH);
     }
