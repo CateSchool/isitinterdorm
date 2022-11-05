@@ -84,7 +84,7 @@ function displayNSaturday(x, y, w, h) {
     let w2 = (2 / dayHours) * w;
     let wAfter = ((END_T - (10 + 12)) / dayHours) * w;
 
-    displayBox(0, 0, w1, h, "8AM", getAcademicEndH(), color(255))
+    displayBox(0, 0, w1, h, "8AM", "", color(255))
     displayBox(w1, 0, w2, h, "4PM", "6PM", color('green'))
     displayBox(w1 + w2, 0, w2, h, "", "8PM", color(255))
     displayBox(w1 + w2 * 2, 0, w2, h, "", "10PM", color('green'))

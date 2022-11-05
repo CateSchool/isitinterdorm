@@ -78,3 +78,7 @@
     color: blue;
     font-size: 12px;
 }
+
+#consent {
+    display: none;
+}
